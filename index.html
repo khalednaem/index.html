@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رسالة من القلب</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+    color:#fff;
+    background:#08050a;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(126,20,63,.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,80,130,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(121,30,88,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #050307,
+            #130710,
+            #210b18,
+            #08050a
+        );
+
+    z-index:-10;
+}
+
+.background::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.65) 1px,transparent 1px),
+        radial-gradient(circle,rgba(255,180,210,.4) 1px,transparent 1px);
+    background-size:120px 120px,190px 190px;
+    background-position:20px 30px,80px 100px;
+    opacity:.22;
+    animation:stars 18s linear infinite;
+}
+
+@keyframes stars{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+.glow{
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.25;
+}
+
+.glow1{
+    background:#e63272;
+    top:-220px;
+    left:-180px;
+}
+
+.glow2{
+    background:#8e1d62;
+    bottom:-240px;
+    right:-180px;
+}
+
+.glow3{
+    background:#ff477e;
+    top:40%;
+    left:45%;
+    opacity:.10;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
+    position:absolute;
+    bottom:-60px;
+    color:#ff8aaa;
+    opacity:0;
+    pointer-events:none;
+    animation:floatHeart linear forwards;
+    filter:drop-shadow(0 0 8px rgba(255,80,130,.5));
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0) scale(.7) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.65;
+    }
+
+    80%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:
+            translateY(-115vh)
+            scale(1.25)
+            rotate(25deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    opacity:1;
+    transform:scale(1);
+
+    transition:
+        opacity 1.1s ease,
+        transform 1.1s ease;
+}
+
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(.94);
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.card{
+    position:relative;
+
+    width:min(900px,94vw);
+    min-height:570px;
+
+    padding:
+        clamp(30px,6vw,65px)
+        clamp(20px,5vw,60px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.13);
+
+    border-radius:40px;
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.6),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,100,150,.15),
+            transparent 40%
+        );
+
+    pointer-events:none;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.eyebrow{
+    color:#ff9ab5;
+    font-size:13px;
+    letter-spacing:4px;
+    margin-bottom:28px;
+}
+
+.main-heart{
+    font-size:78px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,70,120,.55))
+        drop-shadow(0 0 40px rgba(255,70,120,.25));
+
+    animation:heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+.intro-title{
+    margin-top:22px;
+
+    font-size:
+        clamp(32px,7vw,58px);
+
+    font-weight:500;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffc3d4,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.intro-text{
+    max-width:650px;
+
+    margin-top:20px;
+
+    color:#d9c6ce;
+
+    font-size:
+        clamp(15px,2.5vw,19px);
+
+    line-height:2.1;
+}
+
+.start-btn{
+    margin-top:38px;
+
+    padding:16px 38px;
+
+    border:0;
+    border-radius:100px;
+
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ed4779,
+            #9c285b
+        );
+
+    box-shadow:
+        0 12px 35px rgba(237,71,121,.3);
+
+    transition:.35s;
+}
+
+.start-btn:hover{
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 18px 50px rgba(237,71,121,.45);
+}
+
+/* =========================
+   SONG PAGE
+========================= */
+
+.part{
+    color:#ff91ae;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    margin-bottom:25px;
+}
+
+.music-disc{
+    width:78px;
+    height:78px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    background:
+        radial-gradient(
+            circle,
+            #3b1427 0 22%,
+            #160b13 23% 100%
+        );
+
+    box-shadow:
+        0 0 35px rgba(255,75,125,.22);
+
+    animation:disc 4s linear infinite;
+}
+
+@keyframes disc{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.lyric-area{
+    width:100%;
+
+    min-height:245px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:30px 10px;
+}
+
+.lyric{
+    max-width:760px;
+
+    font-size:
+        clamp(23px,4.3vw,40px);
+
+    line-height:1.9;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 25px rgba(255,100,150,.18);
+
+    opacity:0;
+
+    transform:
+        translateY(18px)
+        scale(.98);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.lyric.visible{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.progress-wrap{
+    width:min(600px,85%);
+
+    height:3px;
+
+    background:rgba(255,255,255,.09);
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progress{
+    width:0;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9f2c5b,
+            #ff6e98
+        );
+
+    box-shadow:
+        0 0 15px #ff6e98;
+
+    transition:width .2s linear;
+}
+
+.next-btn{
+    opacity:0;
+    pointer-events:none;
+
+    margin-top:35px;
+
+    padding:14px 30px;
+
+    border-radius:100px;
+
+    border:
+        1px solid rgba(255,150,180,.25);
+
+    background:
+        rgba(255,255,255,.07);
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.5s;
+}
+
+.next-btn.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.next-btn:hover{
+    background:
+        rgba(255,80,130,.18);
+
+    transform:translateY(-3px);
+}
+
+/* =========================
+   SECOND PART
+========================= */
+
+.final-heading{
+    font-size:
+        clamp(28px,6vw,50px);
+
+    font-weight:500;
+
+    margin-bottom:28px;
+
+    color:#fff;
+}
+
+.final-text{
+    width:min(760px,95%);
+
+    min-height:245px;
+
+    font-size:
+        clamp(19px,3.4vw,28px);
+
+    line-height:2.15;
+
+    color:#f4e3e9;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    align-content:center;
+
+    gap:0 7px;
+}
+
+.word{
+    display:inline-block;
+
+    opacity:0;
+
+    transform:
+        translateY(12px);
+
+    filter:blur(4px);
+
+    transition:
+        opacity .75s ease,
+        transform .75s ease,
+        filter .75s ease;
+}
+
+.word.show{
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+    filter:blur(0);
+}
+
+.signature{
+    margin-top:25px;
+
+    font-size:17px;
+
+    color:#ff9bb6;
+
+    opacity:0;
+
+    transform:translateY(10px);
+
+    transition:1.5s ease;
+}
+
+.signature.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .card{
+        min-height:560px;
+
+        border-radius:30px;
+    }
+
+    .main-heart{
+        font-size:65px;
+    }
+
+    .music-disc{
+        width:65px;
+        height:65px;
+        font-size:25px;
+    }
+
+    .lyric-area{
+        min-height:250px;
+    }
+
+    .lyric{
+        font-size:23px;
+        line-height:2;
+    }
+
+    .final-text{
+        font-size:19px;
+        line-height:2.2;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="background">
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+
+</div>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section id="intro" class="page">
+
+    <div class="card">
+
+        <div class="eyebrow">
+            حاجة صغيرة... بس معمولة من القلب
+        </div>
+
+        <div class="main-heart">
+            ❤️
+        </div>
+
+        <h1 class="intro-title">
+            قبل ما تبدأي...
+        </h1>
+
+        <p class="intro-text">
+            مش كل حاجة بنعرف نقولها في وقتها،
+            ومش كل اعتذار بيقدر يوصل الإحساس اللي جوانا.
+            <br>
+            عشان كده حبيت أسيبلك الرسالة دي...
+        </p>
+
+        <button
+            class="start-btn"
+            onclick="startFirst()">
+
+            ابدأي من هنا ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FIRST SONG
+========================= -->
+
+<section id="firstPage" class="page hidden">
+
+    <div class="card">
+
+        <div class="part">
+            الرسالة الأولى
+        </div>
+
+        <div class="music-disc">
+            ♪
+        </div>
+
+        <div class="lyric-area">
+
+            <div
+                id="lyric"
+                class="lyric">
+            </div>
+
+        </div>
+
+        <div class="progress-wrap">
+
+            <div
+                id="progress"
+                class="progress">
+            </div>
+
+        </div>
+
+        <button
+            id="nextBtn"
+            class="next-btn"
+            onclick="goSecond()">
+
+            كمّلي... لسه فاضل حاجة ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SECOND SONG
+========================= -->
+
+<section id="secondPage" class="page hidden">
+
+    <div class="card">
+
+        <div class="part">
+            آخر حاجة كان لازم أقولها
+        </div>
+
+        <div class="final-heading">
+            من غير تبرير...
+        </div>
+
+        <div
+            id="finalText"
+            class="final-text">
+        </div>
+
+        <div
+            id="signature"
+            class="signature">
+
+            مش طالب غير إنك تعرفي إني آسف بجد. ❤️
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AUDIO
+========================= -->
+
+<audio
+    id="song1"
+    preload="metadata"
+    src="WhatsApp Audio 2026-10-05 at 12.27.47 AM.mpeg">
+</audio>
+
+<audio
+    id="song2"
+    preload="metadata"
+    src="WhatsApp Audio 2026-10-05 at 12.50.33 AM.mpeg">
+</audio>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const intro =
+    document.getElementById("intro");
+
+const firstPage =
+    document.getElementById("firstPage");
+
+const secondPage =
+    document.getElementById("secondPage");
+
+const song1 =
+    document.getElementById("song1");
+
+const song2 =
+    document.getElementById("song2");
+
+const lyric =
+    document.getElementById("lyric");
+
+const progress =
+    document.getElementById("progress");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const finalText =
+    document.getElementById("finalText");
+
+const signature =
+    document.getElementById("signature");
+
+
+/* =========================
+   FIRST LYRICS
+========================= */
+
+const lyrics = [
+
+"حقك ع عيني ينور عيني❤",
+
+"يرفيقه مشواري الدايمه💘",
+
+"حقك...! 🤍",
+
+"ينجومي الي بشوفها🥹",
+
+"يمراكبي اللي بحسك عايمه",
+
+"بتاسفلك ونتي لوحدك الي انا ف الدنيا اتاسفتله🤍🌍",
+
+"حصاله ايامي الفاضيه مفيهاش غيرك🫂❤",
+
+"انتي حبيبتي وامي وبنتي وميراثي❤❤❤🌍",
+
+"وتاجي وراس مالي🫂",
+
+"حصني من الدنيا الي انا.",
+
+"ماعرفش مترتب ايه او رسمالي...!",
+
+"الفرحه الي بتخرج من الضنك🥹🤍🤍",
+
+"والثروه الي متتحطش ف البنك😘♥♥",
+
+"والحلوه الي مفيش ف جمالها ولا مصريات ♥",
+
+"ولا خواجاتيي😍😍",
+
+"الفرحه الي تقابل متعوس🥹♥♥",
+
+"والضحكه الي يقولها نياتي",
+
+"انا جاي..",
+
+"بتاسف يحياتي♥",
+
+"وموافق لو هتعاقبيني!",
+
+"انما انا لا همشي ولا اكمل",
+
+"غير لما تقزلي سامحتيني🤍",
+
+"ارجعي عشان اليوم بوخ😔",
+
+"من يوم مزعلتي وسبتيني🫂♥♥💘",
+
+"سامحيني😔",
+
+"واشف والله🤍🤍",
+
+"والله انا اسف!!!",
+
+"سامحيني♥🫂"
+
+];
+
+
+let lastLine = -1;
+
+
+/* =========================
+   START FIRST
+========================= */
+
+function startFirst(){
+
+    intro.classList.add("hidden");
+
+    setTimeout(()=>{
+
+        firstPage.classList.remove("hidden");
+
+        song1.currentTime = 0;
+
+        song1.play();
+
+    },900);
+
+}
+
+
+/* =========================
+   SYNC FIRST SONG
+========================= */
+
+song1.addEventListener("loadedmetadata",()=>{
+
+    /*
+      الكلام بيتوزع على مدة الأغنية
+      بالتساوي بدل السرعة.
+    */
+
+});
+
+
+song1.addEventListener("timeupdate",()=>{
+
+    if(!song1.duration) return;
+
+    const percent =
+        (song1.currentTime /
+        song1.duration) * 100;
+
+    progress.style.width =
+        percent + "%";
+
+
+    let index =
+        Math.floor(
+            (song1.currentTime /
+            song1.duration) *
+            lyrics.length
+        );
+
+
+    if(index >= lyrics.length){
+        index = lyrics.length - 1;
+    }
+
+
+    if(index !== lastLine){
+
+        lastLine = index;
+
+        lyric.classList.remove("visible");
+
+        setTimeout(()=>{
+
+            lyric.textContent =
+                lyrics[index];
+
+            lyric.classList.add("visible");
+
+        },500);
+
+    }
+
+});
+
+
+/* =========================
+   FIRST SONG END
+========================= */
+
+song1.addEventListener("ended",()=>{
+
+    lyric.classList.remove("visible");
+
+    setTimeout(()=>{
+
+        lyric.textContent =
+            "ولو لسه مكملة... فاضل آخر حاجة.";
+
+        lyric.classList.add("visible");
+
+        setTimeout(()=>{
+
+            nextBtn.classList.add("show");
+
+        },1800);
+
+    },700);
+
+});
+
+
+/* =========================
+   SECOND PART
+========================= */
+
+function goSecond(){
+
+    song1.pause();
+
+    firstPage.classList.add("hidden");
+
+    setTimeout(()=>{
+
+        secondPage.classList.remove("hidden");
+
+        song2.currentTime = 0;
+
+        song2.play();
+
+        startFinal();
+
+    },1000);
+
+}
+
+
+/* =========================
+   SECOND MESSAGE
+========================= */
+
+const finalMessage = `
+
+أنا عارف إن كلمة آسف لوحدها مش كفاية.
+
+وعارف إن في حاجات حصلت
+مينفعش تتصلح بكلمتين.
+
+وأنا مش داخل أبرر لنفسي.
+
+أنا غلطت.
+
+وزعلتك.
+
+ويمكن أكتر حاجة مضايقاني
+إني عرفت قيمة حاجات كتير
+بعد ما وجعتك.
+
+أنا مش طالب منك تنسي اللي حصل.
+
+ولا طالب منك تسامحي بسرعة.
+
+ولا حتى طالب منك تاخدي قرار
+عشان أنا عايزه.
+
+أنا بس كان لازم أقولك
+إني ندمان بجد.
+
+مش ندمان عشان أخاف أخسرك وبس...
+
+ندمان عشان فهمت
+إن الشخص اللي قدامي
+كان يستاهل مني أحافظ عليه
+مش أكون سبب في زعله.
+
+ولو في حاجة أقدر أعملها
+فهي إني أتعلم من الغلط ده.
+
+وأكون أهدى.
+
+وأفهم.
+
+وأحافظ على الناس
+اللي وجودهم في حياتي
+مش حاجة عادية.
+
+أنا آسف على كل كلمة وجعتك.
+
+وعلى كل موقف خليكي تحسي
+إنك مش مهمة.
+
+لأن الحقيقة إنك كنتِ مهمة...
+
+وأنا اللي قصرت.
+
+مش هضغط عليكِ.
+
+ومش هقولك لازم ترجعي.
+
+أنا بس أتمنى
+إن اعتذاري يوصل زي ما هو...
+
+من غير تبرير.
+
+من غير كبرياء.
+
+ومن غير أي حاجة غير الصدق.
+
+أنا آسف.
+
+وحقك عليا. ❤️
+
+`;
+
+
+/* =========================
+   WORD ANIMATION
+========================= */
+
+function startFinal(){
+
+    const words =
+        finalMessage
+        .trim()
+        .split(/\s+/);
+
+    finalText.innerHTML = "";
+
+    words.forEach((word,index)=>{
+
+        const span =
+            document.createElement("span");
+
+        span.className = "word";
+
+        span.textContent = word;
+
+        finalText.appendChild(span);
+
+
+        /*
+          السرعة الجديدة:
+          450ms بين كل كلمة.
+          وعند نهاية الجمل بنعمل وقفة أطول.
+        */
+
+        let delay =
+            index * 430;
+
+
+        const cleanWord =
+            word.replace(/[.,!?،؛:]/g,"");
+
+
+        if(
+            word.includes(".") ||
+            word.includes("؟") ||
+            word.includes("!") ||
+            word.includes("...") ||
+            word.includes("،")
+        ){
+
+            delay += 900;
+
+        }
+
+
+        setTimeout(()=>{
+
+            span.classList.add("show");
+
+        },delay);
+
+    });
+
+
+    const totalTime =
+        words.length * 430 + 3500;
+
+
+    setTimeout(()=>{
+
+        signature.classList.add("show");
+
+    },totalTime);
+
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        Math.random() > .5
+        ? "❤"
+        : "♡";
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (12 + Math.random()*18) + "px";
+
+    heart.style.animationDuration =
+        (8 + Math.random()*8) + "s";
+
+    document
+        .querySelector(".background")
+        .appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },17000);
+
+}
+
+
+setInterval(
+    createHeart,
+    900
+);
+
+
+/* أول كام قلب */
+
+for(let i=0;i<8;i++){
+
+    setTimeout(
+        createHeart,
+        i*500
+    );
+
+}
+
+</script>
+
+</body>
+</html>
